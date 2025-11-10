@@ -36,7 +36,10 @@ df['Label'].fillna('Unknown', inplace=True)
 df['CDR Genre'].fillna('Unknown', inplace=True)
 df['CDR Style'].fillna('Unknown', inplace=True)
 
-df['Year'] = pd.to_datetime(df['Date']).dt.year
+df['Year'] = pd.to_datetime(df['Date'], format='%d-%b-%y').dt.year
+
+# Get unique years and sort them
+unique_years = sorted(df['Year'].unique())
 
 # Categorize the loudness into levels (e.g., Quiet, Moderate, Loud).
 df['Loudness_level'] = pd.cut(df['Loudness (dB)'], bins=[-60, -20, -10, 0], labels=['Quiet', 'Moderate', 'Loud'])

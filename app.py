@@ -103,6 +103,14 @@ links = dmc.Stack(
     ]
 )
 
+filter_store = dcc.Store(id='filter-store', data={
+    'energy_levels': list(df['Energy_level'].unique()),
+    'danceability_levels': list(df['Danceability_level'].unique()),
+    'genres': df['CDR Genre'].value_counts().head(3).index.tolist(),
+    'year_range': [df['Year'].min(), df['Year'].max()],
+    'producers': list(df['Producers'].unique())[:3]
+})
+
 # developing the side setup inside a variable 
 navbar = dcc.Loading(
     dmc.ScrollArea(
@@ -112,9 +120,9 @@ navbar = dcc.Loading(
                 [
                     theme_toggle,
                     links,
+                    filter_store,
                     dropdown_danceability_level,
                     dropdown_Producers,
-                    year_dropdown,
                     genre_dropdown,
                     energy_level_dropdown
         
@@ -184,6 +192,28 @@ app.layout = dmc.MantineProvider(
     forceColorScheme="light",
 )
 
+# Callback to sync filters with store
+@callback(
+    Output('filter-store', 'data'),
+    Input('energy_level_dropdown', 'value'),
+    Input('dropdown_danceability_level', 'value'),
+    Input('genre_dropdown', 'value'),
+    Input('dropdown_Producer', 'value'),
+    State('filter-store', 'data')
+)
+def update_filter_store(energy_levels, danceability_levels, genres, producers, current_data):
+    updated_data = current_data.copy()
+    
+    if energy_levels is not None:
+        updated_data['energy_levels'] = energy_levels
+    if danceability_levels is not None:
+        updated_data['danceability_levels'] = danceability_levels
+    if genres is not None:
+        updated_data['genres'] = genres
+    if producers is not None:
+        updated_data['producers'] = producers
+        
+    return updated_data
 
 @callback(
     Output("app-shell", "navbar"),

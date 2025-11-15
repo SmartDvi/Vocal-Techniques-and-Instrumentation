@@ -1,11 +1,13 @@
 import dash_mantine_components as dmc
 from dash import Input, Output, Dash, State, dcc, _dash_renderer, callback
 import dash
-from utils import colors, df
+from Asset.utils import colors, df
 from dash_iconify import DashIconify
 
 
 _dash_renderer._set_react_version('18.2.0')
+
+dmc.add_figure_templates(default="mantine_light")
 
 app = Dash(
     external_stylesheets=dmc.styles.ALL, 

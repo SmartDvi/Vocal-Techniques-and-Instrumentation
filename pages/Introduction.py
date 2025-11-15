@@ -1,7 +1,7 @@
 import dash_mantine_components as dmc
 from dash import html, dcc
 import dash_ag_grid as dag
-from utils import df, metrics, colors
+from Asset.utils import df, metrics, colors
 import dash
 
 

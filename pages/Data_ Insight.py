@@ -5,7 +5,7 @@ import dash
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from utils import colors, df, vocal_techniques, top_instruments, instrument_columns, metrics
+from Asset.utils import colors, df, vocal_techniques, top_instruments, instrument_columns, metrics
 
 dash.register_page(
     __name__,

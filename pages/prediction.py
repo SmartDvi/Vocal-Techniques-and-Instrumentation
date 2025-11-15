@@ -12,7 +12,7 @@ from dash_iconify import DashIconify
 dash.register_page(
     __name__,
     path='/Prediction',
-    title='AI Music Insights', 
+    title=' Music Prediction Insights', 
     description='Machine Learning and NLP analysis of hit song patterns',
     order=3
 )

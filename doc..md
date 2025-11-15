@@ -6,6 +6,12 @@ This comprehensive solution provides data-driven insights for music professional
 
 ---
 
+![Image preview](https://drive.google.com/file/d/1Fcj3PzrHaNFtMDM9pvZEIM3ATeEsTRTf/view?usp=sharing)
+
+
+[Click to explore app](https://44203baf-fea9-4dcb-8eeb-cea103f706b2.plotly.app)
+
+
 ## 🎯 Business Objectives
 
 ### **Primary Goals**
